@@ -76,8 +76,8 @@ SELECT
     unique department_id
 FROM hr.employees;
 
-// 문제 1 employees 테이블에서 employee_id, last_name과 first_name은 연결해서 표시하고(공백으로 구분)
-// 열 별칭은 화면 예처럼 쿼리문을 작성해주세요.
+-- 문제 1 employees 테이블에서 employee_id, last_name과 first_name은 연결해서 표시하고(공백으로 구분)
+-- 열 별칭은 화면 예처럼 쿼리문을 작성해주세요.
 
 SELECT 
     employee_id "Emp#"
@@ -91,7 +91,7 @@ SELECT
      last_name || ', ' || job_id "Employee and Title"
 FROM employees;
 
-// 문제 3 departments 테이블에 있는 데이터에서 department_name, manager_id 컬럼을 가지고 화면 결과 출력
+-- 문제 3 departments 테이블에 있는 데이터에서 department_name, manager_id 컬럼을 가지고 화면 결과 출력
 SELECT
     department_name || 'Department''s Manager ID :' || manager_id "Department and Manager"
 FROM hr.departments;
@@ -105,7 +105,7 @@ desc hr.employees
 
 SELECT *
 FROM hr.employees
-WHERE hire_date  = '01/01/13'; // '2001-01-13'도 가능하며 미국인 경우 '13-JAN-03' 이지만 오류 발생
+WHERE hire_date  = '01/01/13'; -- '2001-01-13'도 가능하며 미국인 경우 '13-JAN-03' 이지만 오류 발생
 
 SELECT *
 FROM hr.employees
@@ -117,19 +117,19 @@ FROM hr.employees
 WHERE salary >= 20000
 OR department_id = 90;
 
-// 문제 4 employees 테이블에서 급여가 2500 ~ 3500인 사원들의 last_name, salary를 출력
+-- 문제 4 employees 테이블에서 급여가 2500 ~ 3500인 사원들의 last_name, salary를 출력
 
 SELECT last_name, salary
 FROM hr.employees
 WHERE 2500 <= salary AND salary <= 3500;
 
-// 문제 5 employees 테이블에서 급여가 2500 ~ 3500가 아닌 사원들의 last_name, salary를 출력
+-- 문제 5 employees 테이블에서 급여가 2500 ~ 3500가 아닌 사원들의 last_name, salary를 출력
 
 SELECT last_name, salary
 FROM hr.employees
 WHERE NOT(2500 <= salary AND salary <= 3500);
 
-// 문제 6 employees 테이블에서 hire_date(입사일) 2001(01) ~ 2002(02)년도 입사한 사원정보를 출력
+-- 문제 6 employees 테이블에서 hire_date(입사일) 2001(01) ~ 2002(02)년도 입사한 사원정보를 출력
 SELECT *
 FROM hr.employees
 WHERE hire_date >= '2001-01-01'
@@ -152,7 +152,7 @@ AND salary > 5000;
 
 SELECT *
 FROM hr.employees
-WHERE commission_pct IS NOT NULL; // 결측치를 확인하기 위해 '' 공백으로 검색하면 안된다.
+WHERE commission_pct IS NOT NULL; -- 결측치를 확인하기 위해 '' 공백으로 검색하면 안된다.
 
 SELECT *
 FROM hr.employees
@@ -176,8 +176,8 @@ WHERE last_name like '__i%';
 
 desc hr.employees job_id;
 
-// 문제 7 employees 테이블에 있는 데이터 중에 job_id가 SA로 시작되고 salary 값은 10000이상
-// 받는 사원들의 정보를 출력
+-- 문제 7 employees 테이블에 있는 데이터 중에 job_id가 SA로 시작되고 salary 값은 10000이상
+-- 받는 사원들의 정보를 출력
 
 select *
 from hr.employees
@@ -211,23 +211,23 @@ WHERE job_id IN ('SA_REP', 'AD_PRES')
       
 SELECT employee_id, salary
 FROM hr.employees
-ORDER BY salary asc; // 오름차순 정렬
+ORDER BY salary asc; -- 오름차순 정렬
 
 SELECT employee_id, salary
 FROM hr.employees
-ORDER BY salary desc; // 내림차순 정렬
+ORDER BY salary desc; -- 내림차순 정렬
 
 SELECT employee_id, salary * 12 annual_salary
 FROM hr.employees
-ORDER BY salary * 12 desc; // 표현식 또한 그대로 사용 가능하다.
+ORDER BY salary * 12 desc; -- 표현식 또한 그대로 사용 가능하다.
 
 SELECT employee_id, salary * 12 as "annual_salary" // 회사에 맞춰 as 사용 
 FROM hr.employees
-ORDER BY "annual_salary" desc; // 열별칭 사용가능 하지만 ORDER BY에도 열별칭을 꼭 써줘야 하며, 사용한 경우 큰따옴표 사용
+ORDER BY "annual_salary" desc; -- 열별칭 사용가능 하지만 ORDER BY에도 열별칭을 꼭 써줘야 하며, 사용한 경우 큰따옴표 사용
 
 SELECT employee_id, salary * 12 as "annual_salary"
 FROM hr.employees
-ORDER BY 2 desc; // 위치표기법 또한 가능
+ORDER BY 2 desc; -- 위치표기법 또한 가능
 
 /* 문제 11 2006년도 입사한 사원의 employee_id, last_name, hire_date를 출력해주세요
           단 last_name 이름을 기준으로 오름차순정렬해주세요. */
@@ -260,15 +260,15 @@ WHERE last_name = 'king';
 
 SELECT *
 FROM hr.employees
-WHERE lower(last_name) = 'king'; // 소문자로 검색시 안나왔던 것을 소문자로 변환하여 검색되게 변경
+WHERE lower(last_name) = 'king'; -- 소문자로 검색시 안나왔던 것을 소문자로 변환하여 검색되게 변경
 
 SELECT *
 FROM hr.employees
-WHERE upper(last_name) = 'king'; // 대문자로 변환
+WHERE upper(last_name) = 'king'; -- 대문자로 변환
 
 SELECT *
 FROM hr.employees
-WHERE initcap(last_name) = 'king'; // 첫 글짜는 대문자 나머지는 소문자로 변환
+WHERE initcap(last_name) = 'king'; -- 첫 글짜는 대문자 나머지는 소문자로 변환
 
 SELECT employee_id, upper(last_name), lower(last_name), initcap(last_name)
 FROM hr.employees
@@ -276,11 +276,11 @@ WHERE department_id = 20;
 
 SELECT employee_id, upper(last_name), lower(last_name), initcap(last_name)
 FROM hr.employees
-WHERE department_id = 50; // WHERE 절에서 문자 함수 사용시 부담 >> SELECT 절에서는 괜찮
+WHERE department_id = 50; -- WHERE 절에서 문자 함수 사용시 부담 >> SELECT 절에서는 괜찮
 
 SELECT employee_id, last_name || first_name, concat(last_name,first_name)
 FROM hr.employees
-WHERE department_id = 50; // concat 여러개의 문자열을 합턴
+WHERE department_id = 50; -- concat 여러개의 문자열을 합턴
 
 SELECT
     last_name,
@@ -296,7 +296,7 @@ FROM dual;*/
     
 SELECT * FROM nls_database_parameters;
     
-// NLS_CHARACTERSET AL32UTF8 --데이터베이스에 설정된 문자 characterset, 유니코드(unicode) 전세계 출판되는 글자는 char, varchar2 타입의 컬럼에 입력
+-- NLS_CHARACTERSET AL32UTF8 --데이터베이스에 설정된 문자 characterset, 유니코드(unicode) 전세계 출판되는 글자는 char, varchar2 타입의 컬럼에 입력
     
 SELECT * FROM nls_session_parameters;
     
